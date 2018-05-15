@@ -1,0 +1,41 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.tencent.tinker.patch'
+android {
+
+    compileSdkVersion 26    //编译的SDK 版本
+    defaultConfig {
+        applicationId "com.cml.myapplication"
+        minSdkVersion 21    //最小能支持的 android 系统版本
+        targetSdkVersion 26 //目标 android系统版本
+        versionCode 1       //内部版本号(通常是公司自己定义,随版本升级+1)
+        versionName "1.0"   //程序版本号(会展示在应用市场上)
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    //andfix
+    compile 'com.alipay.euler:andfix:0.5.0@aar'
+
+    //可选，用于生成application类
+    provided 'com.tencent.tinker:tinker-android-anno:1.9.1'//provided 只编译不参与打包
+    //tinker的核心库
+    compile 'com.tencent.tinker:tinker-android-lib:1.9.1'// compile 会被打到包中
+
+    compile 'com.android.support:multidex:1.0.1'
+}
