@@ -7,6 +7,8 @@ import com.tencent.tinker.loader.app.ApplicationLike;
 
 /**
  * Created by chenmingliang on 2018/5/15.
+ *
+ * thinkerId is not set
  */
 
 public class TinkerManager {
